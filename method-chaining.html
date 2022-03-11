@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.8/d3.min.js" type="text/JavaScript"></script>
+
+    <title>Method chaining in D3</title>
+    <style>
+        #borderdiv{
+            width: 200px;
+            height:50px;
+            border:2px solid blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="borderdiv"></div>
+    <script>
+        var someData=["a","b","c","d","e"];
+        d3.select("body")
+        .selectAll("div")
+        .data(someData)
+        .enter()
+        .append("div")
+        .html("<b> wow! <b>")
+        .append("span")
+        .html("  <i> More wow <i>");
+    </script>
+</body>
+</html>
