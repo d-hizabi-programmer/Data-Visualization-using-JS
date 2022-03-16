@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scaling Data</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.8/d3.min.js" type="text/JavaScript"></script>
+
+</head>
+
+<body>
+    <svg style="width:500px;height: 500px;">
+
+    </svg>
+    <script>
+        //scaling data
+        var myData = [14, 68, 245000, 430, 19, 1000, 5555, 75698];
+        // in d3-> d3.min(array) and d3.max(array)
+        var yScale = d3.scaleLinear().domain([0, Math.max(...myData)]).range([0, 100]);
+        // var yScale = d3.scaleLinear().domain([0, 245000]).range([0, 500]);
+
+
+        d3.select("svg")
+            .selectAll("rect")
+            .data([14, 68, 245000, 430, 19, 1000, 5555, 75698])
+            .enter()
+            .append("rect")
+            .attr("width", 10)
+            .attr("x", (d, i) => {
+                return i * 15;
+            })
+            .attr("y", d => 100 - yScale(d))
+            .attr("height", d => yScale(d));
+    </script>
+</body>
+
+</html>
